@@ -38,7 +38,7 @@ h2{
 	padding: auto;
 	text-align: center;
 	width: 75%;
-	height: 400px;
+	height: 475px;
 	background-color: black;
 	border-style: groove;
 	border-width: 7px;
@@ -59,12 +59,10 @@ button{
 	font-size: 26px;
 	font-family: 'Baloo Chettan', cursive;
 	color: white;
-}
-
-#startButtons{
 	margin: auto;
 	margin-top: 150px;
 }
+
 
 button:hover {
 	border-style: groove;
@@ -77,35 +75,44 @@ button:hover {
 	background-image: url(../images/rainbow_bubbles.png); 
 }
 
-p {
-	
-}
 
-#timeLeft{
-	margin-top: 0;
-}
 
-#mainQuestion, h3{
-	margin-top: 20px;
+h3{
+	margin-top: 15px;
 	margin-bottom: 20px;
 	color: white;
 	font-family: 'Hammersmith One', sans-serif;
-	font-size: 40px;
+	font-size: 45px;
 
 }
-
-#allTheAnswers{
+h4{
 	color: white;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 35px;
-	margin-top: 200px;
+	padding-top: 30px;	
+
+}
+
+#button {
+	color: white;
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 35px;
 	padding-top: 30px	
 }
 
-p:hover{
+#button:hover{
+	border-style: groove;
+	border-width: 10px;
+	border-top-color: yellow;
+	border-left-color: green;
+	border-right-color: blue;
+	border-bottom-color:pink;
+	color: #40e0d0;
+/*
 	border-style: groove;
 	border-width: 10px;
 	border-color: yellow;
 	color:#87ceeb;
+	font-size: 40px;  */
 
 }

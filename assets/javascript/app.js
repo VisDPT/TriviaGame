@@ -38,6 +38,7 @@ function startButton () {
 	$('#startButtons').on("click", function(){
 		 $('#startButtons').empty(); 
 		console.log("Ready, set, go");
+		
 		runQuestions();
 	})
 }
@@ -45,10 +46,10 @@ function startButton () {
 function runQuestions(){
 	run();
 	$('#mainQuestion').append("<h3>" + question1.question + "</h3>");
-	$('#allTheAnswers').append("<p>" + question1.allAnswers[0] + "</p>"+
-							   "<p>" + question1.allAnswers[1] + "</p>"+
-						   	   "<p>" + question1.allAnswers[2] + "</p>"+
-							   "<p>" + question1.allAnswers[3] + "</p>");
+	$('#allTheAnswers').append("<p id= 'button'>" + question1.allAnswers[0] + "</p>"+
+							   "<p id= 'button'>" + question1.allAnswers[1] + "</p>"+
+						   	   "<p id= 'button'>" + question1.allAnswers[2] + "</p>"+
+							   "<p id= 'button'>" + question1.allAnswers[3] + "</p>");
 	
 }
 
@@ -62,7 +63,7 @@ function run(){
         
 function decrement(){
     number--;// Decrease number by one.
-    $('#timeLeft').html('<h2>' + number + '</h2>');// Show the number            // Once number hits zero...
+    $('#timeLeft').html('<h4> Time Remaining: ' + number + ' seconds <h4>');// Show the number            // Once number hits zero...
     if (number === 0){
     	stop();
     	console.log('Time Up!')// test/debug
