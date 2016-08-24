@@ -2,9 +2,6 @@ $(document).ready(function(){
 
 
 //=================GLOBALs ========================
-var questions = "";
-var answer= "";
-
 var question1 = {
 		question:"Which city has the Burj Khalifa?",  
 		allAnswers:["Paris", "NYC", "Dubai", "Muscat"],
@@ -18,9 +15,9 @@ var question2 = {
 }
 
 var question3 = {
-		question:"Which city has an Incan citadel set high in the Andes Mountains in Peru",  
-		allAnswers:["Mexico City", "Agra", "Dubai", "Muscat"],
-		correctAnswer: "Agra",
+		question:"Which city is known for its gondolas?",  
+		allAnswers:["Venice", "Paris", "Madrid", "Athens"],
+		correctAnswer: "Venice",
 }
 
 var question4 = {
@@ -31,42 +28,56 @@ var question4 = {
 
 var questionsArray = [question1, question2, question3, question4];
 
+
 //=====================FUNCTIONS ===================
 function startButton () {
 	var startButton = $('<button> START PLAYING! </button>');
 	$('#startButtons').append(startButton);
-	$('#startButtons').on("click", function(){//on click,
-		$('#startButtons').empty(); //empties
-		$('#mainQuestion').append("<h3>" + question1.question + "</h3>");
-		$('#allTheAnswers').append("<p>" + question1.allAnswers[0] + "</p>"+
-									"<p>" + question1.allAnswers[1] + "</p>"+
-									"<p>" + question1.allAnswers[2] + "</p>"+
-									"<p>" + question1.allAnswers[3] + "</p>");
-		
-		
+	
+	//function for on click to empty and run questions
+	$('#startButtons').on("click", function(){
+		 $('#startButtons').empty(); 
 		console.log("Ready, set, go");
-		})
+		runQuestions();
+	})
+}
+
+function runQuestions(){
+	run();
+	$('#mainQuestion').append("<h3>" + question1.question + "</h3>");
+	$('#allTheAnswers').append("<p>" + question1.allAnswers[0] + "</p>"+
+							   "<p>" + question1.allAnswers[1] + "</p>"+
+						   	   "<p>" + question1.allAnswers[2] + "</p>"+
+							   "<p>" + question1.allAnswers[3] + "</p>");
+	
+}
+
+//------------------------Timer FUNCTIONS------------
+var number = 10;// Set our number counter to 30.
+
+function run(){
+    counter = setInterval(decrement, 1000)    
+}
+
+        
+function decrement(){
+    number--;// Decrease number by one.
+    $('#timeLeft').html('<h2>' + number + '</h2>');// Show the number            // Once number hits zero...
+    if (number === 0){
+    	stop();
+    	console.log('Time Up!')// test/debug
+    }
+}
+
+function stop(){
+    clearInterval(counter);// Clears our "counter" interval
 }
 
 
-
-//======================START BUTTON ===================
+//====================== PROCESS ===================
 
 startButton();
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 })
 

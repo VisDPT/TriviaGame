@@ -49,13 +49,13 @@ h2{
 
 button{
 	border-style: solid;
-	border-width: 2px;
+	border-width: 5px;
 	border-color: grey;
 	background-color: black;
 	opacity:.9;
 	background-size: 200px, 75px;
 	width: 200px;
-	height: 75px;
+	height: 100px;
 	font-size: 26px;
 	font-family: 'Baloo Chettan', cursive;
 	color: white;
@@ -66,8 +66,25 @@ button{
 	margin-top: 150px;
 }
 
-p {
+button:hover {
+	border-style: groove;
+	border-width: 10px;
+	border-top-color: yellow;
+	border-left-color: pink;
+	border-right-color: blue;
+	border-bottom-color: green;
+	color: black;
+	background-image: url(../images/rainbow_bubbles.png); 
 }
+
+p {
+	
+}
+
+#timeLeft{
+	margin-top: 0;
+}
+
 #mainQuestion, h3{
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -87,6 +104,8 @@ p {
 
 p:hover{
 	border-style: groove;
-	border-width: 7px;
-	border-color: #7fff00;
+	border-width: 10px;
+	border-color: yellow;
+	color:#87ceeb;
+
 }
