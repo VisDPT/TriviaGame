@@ -2,33 +2,33 @@ $(document).ready(function(){
 
 
 //=================GLOBALs ========================
-var question1 = {
-		question:"Which city has the Burj Khalifa?",  
+var questionsArray = [
+{		question:"Which city has the Burj Khalifa?",  
 		allAnswers:["Paris", "NYC", "Dubai", "Muscat"],
 		correctAnswer: "Dubai",
-}
+},
 
-var question2 = {
-		question:"Which city has the Taj Mahal?",  
+{		question:"Which city has the Taj Mahal?",  
 		allAnswers:["Mumbai", "Agra", "Dubai", "Muscat"],
 		correctAnswer: "Agra",
-}
+},
 
-var question3 = {
-		question:"Which city is known for its gondolas?",  
+{		question:"Which city is known for its gondolas?",  
 		allAnswers:["Venice", "Paris", "Madrid", "Athens"],
 		correctAnswer: "Venice",
-}
+},
 
-var question4 = {
-		question:"The is of the coast of which city?",  
+{		question:"The Great Blue Hole is of the coast of which city?",  
 		allAnswers:["Mexico City", "Belize City", "Bridgetown", "Kingston", "Muscat"],
 		correctAnswer: "Belize City",
-}
-
-var questionsArray = [question1, question2, question3, question4];
+}];
 
 
+
+
+
+
+//multidimensional array
 //=====================FUNCTIONS ===================
 function startButton () {
 	var startButton = $('<button> START PLAYING! </button>');
@@ -37,20 +37,25 @@ function startButton () {
 	//function for on click to empty and run questions
 	$('#startButtons').on("click", function(){
 		 $('#startButtons').empty(); 
-		console.log("Ready, set, go");
-		
+		console.log("Ready, set, go");		
 		runQuestions();
 	})
 }
 
 function runQuestions(){
 	run();
-	$('#mainQuestion').append("<h3>" + question1.question + "</h3>");
-	$('#allTheAnswers').append("<p id= 'button'>" + question1.allAnswers[0] + "</p>"+
-							   "<p id= 'button'>" + question1.allAnswers[1] + "</p>"+
-						   	   "<p id= 'button'>" + question1.allAnswers[2] + "</p>"+
-							   "<p id= 'button'>" + question1.allAnswers[3] + "</p>");
+	$('#mainQuestion').append("<h3>" + questionsArray[0].question + "</h3>");
+	$('#allTheAnswers').append("<p id= 'button'>" + questionsArray[0].allAnswers[0] + "</p>"+
+							   "<p id= 'button'>" + questionsArray[0].allAnswers[1] + "</p>"+
+						   	   "<p id= 'button'>" + questionsArray[0].allAnswers[2] + "</p>"+
+							   "<p id= 'button'>" + questionsArray[0].allAnswers[3] + "</p>");
 	
+
+
+
+
+
+
 }
 
 //------------------------Timer FUNCTIONS------------
@@ -80,7 +85,7 @@ function stop(){
 startButton();
 	
 
-})
+});
 
 /*You'll create a trivia game that shows only one question until the player answers it or their time runs out.
 
@@ -117,3 +122,33 @@ On the final screen, show the number of correct answers, incorrect answers, and 
 			//incorrect answers
 			//unanswered
 			//START OVER BUTTON - that does not reload page
+
+
+
+/*
+var question1 = {
+		question:"Which city has the Burj Khalifa?",  
+		allAnswers:["Paris", "NYC", "Dubai", "Muscat"],
+		correctAnswer: "Dubai",
+}
+
+var question2 = {
+		question:"Which city has the Taj Mahal?",  
+		allAnswers:["Mumbai", "Agra", "Dubai", "Muscat"],
+		correctAnswer: "Agra",
+}
+
+var question3 = {
+		question:"Which city is known for its gondolas?",  
+		allAnswers:["Venice", "Paris", "Madrid", "Athens"],
+		correctAnswer: "Venice",
+}
+
+var question4 = {
+		question:"The is of the coast of which city?",  
+		allAnswers:["Mexico City", "Belize City", "Bridgetown", "Kingston", "Muscat"],
+		correctAnswer: "Belize City",
+}
+
+var questionsArray = [question1, question2, question3, question4];
+*/
