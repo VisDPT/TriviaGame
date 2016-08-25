@@ -18,7 +18,7 @@ var questionsArray = [
 		correctAnswer: "Venice",
 },
 
-{		question:"The Great Blue Hole is of the coast of which city?",  
+{		question:"The Great Blue Hole is off the coast of which city?",  
 		allAnswers:["Mexico City", "Belize City", "Bridgetown", "Kingston", "Muscat"],
 		correctAnswer: "Belize City",
 }];
@@ -36,27 +36,45 @@ function startButton () {
 	
 	//function for on click to empty and run questions
 	$('#startButtons').on("click", function(){
-		 $('#startButtons').empty(); 
+		 $('#startButtons').empty();
+		 $('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions();
+		checkAnswer();
 	})
 }
 
+
 function runQuestions(){
 	run();
-	$('#mainQuestion').append("<h3>" + questionsArray[0].question + "</h3>");
-	$('#allTheAnswers').append("<p id= 'button'>" + questionsArray[0].allAnswers[0] + "</p>"+
-							   "<p id= 'button'>" + questionsArray[0].allAnswers[1] + "</p>"+
-						   	   "<p id= 'button'>" + questionsArray[0].allAnswers[2] + "</p>"+
-							   "<p id= 'button'>" + questionsArray[0].allAnswers[3] + "</p>");
-	
-
-
-
-
-
-
+	$('#mainQuestion').append('<h3>' + questionsArray[0].question + '</h3>');
+	$('#allTheAnswers').append('<p class= "button">' + questionsArray[0].allAnswers[0] + '</p>'+
+							   '<p class= "button">' + questionsArray[0].allAnswers[1] + '</p>'+
+						   	   '<p id= "buttonCorrect">' + questionsArray[0].correctAnswer + '</p>'+
+							   '<p class= "button">' + questionsArray[0].allAnswers[3] + '</p>');
 }
+
+function checkAnswer(){
+	$('.button').on("click", function(){
+		stop();  //stops timer
+    	$('#mainQuestion').empty(); //clears the question
+		$('#allTheAnswers').empty();//clears the answers
+		$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'+ ' ' + questionsArray[0].correctAnswer + '</p>')
+		
+	})
+
+	$('#buttonCorrect').on("click", function(){
+		stop();  //stops timer
+    	$('#mainQuestion').empty(); //clears the question
+		$('#allTheAnswers').empty();//clears the answers
+		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
+		
+
+	})
+}
+
+
+//------------Simple timer for after the answer displayed---------
 
 //------------------------Timer FUNCTIONS------------
 var number = 10;// Set our number counter to 30.
@@ -68,10 +86,14 @@ function run(){
         
 function decrement(){
     number--;// Decrease number by one.
-    $('#timeLeft').html('<h4> Time Remaining: ' + number + ' seconds <h4>');// Show the number            // Once number hits zero...
+    $('#timeLeft').html('<h4> Time Remaining: ' + number + ' seconds <h4>');// Show the number            
     if (number === 0){
     	stop();
-    	console.log('Time Up!')// test/debug
+    	$('#mainQuestion').empty();
+		$('#allTheAnswers').empty();
+		$('#timeLeft').empty();
+    	console.log('Time Up!');// test/debug
+    	$('#mainQuestion').append('<p> Times Up! The correct answer was:' + questionsArray[0].correctAnswer + '</p>');
     }
 }
 

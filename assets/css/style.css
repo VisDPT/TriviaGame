@@ -93,14 +93,32 @@ h4{
 
 }
 
-#button {
+.button {
 	color: white;
 	font-family: 'Hammersmith One', sans-serif;
 	font-size: 35px;
 	padding-top: 30px	
 }
 
-#button:hover{
+.button:hover{
+	border-style: groove;
+	border-width: 10px;
+	border-top-color: yellow;
+	border-left-color: #7cfc00;
+	border-right-color: #00ffff;
+	border-bottom-color:pink;
+	color: #40e0d0;
+}
+
+
+#buttonCorrect {
+	color: white;
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 35px;
+	padding-top: 30px;	
+}
+
+#buttonCorrect:hover{
 	border-style: groove;
 	border-width: 10px;
 	border-top-color: yellow;
@@ -115,4 +133,21 @@ h4{
 	color:#87ceeb;
 	font-size: 40px;  */
 
+}
+
+p{
+	color: white;
+	font-family: 'Hammersmith One', sans-serif;
+	font-size: 35px;
+	padding-top: 30px;
+}
+
+#correctAnswer{
+	border-style: groove;
+	border-width: 10px;
+	border-top-color: yellow;
+	border-left-color: #7cfc00;
+	border-right-color: #00ffff;
+	border-bottom-color:pink;
+	color: #40e0d0;
 }
