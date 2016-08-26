@@ -52,6 +52,11 @@ function stop(){
 }
 
 //=====================FUNCTIONS ===================
+function clearMainBox(){
+    	$('#mainQuestion').empty();
+		$('#allTheAnswers').empty();
+		$('#timeLeft').empty();
+}
 
 function runQuestions(){
 	run();
@@ -70,7 +75,8 @@ function runQuestions(){
 		$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'
 									+ ' ' 
 									+ questionsArray[0].correctAnswer 
-									+ '</p>')		
+									+ '</p>')
+		setTimeout(clearMainBox, 3000);		
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -78,7 +84,7 @@ function runQuestions(){
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
-
+		setTimeout(clearMainBox, 3000);
 	})
 }
 
@@ -95,13 +101,62 @@ function startButton () {
 		$('#startButtons').empty();
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
-		runQuestions();
+		runQuestions(); ///calls the runQuestions
 		//checkAnswer();
 	})
 }
 //============================ PROCESS ==========================
 startButton();	
 });
+
+
+// Create html skeleton
+		// Instruct the user how to play
+
+	// Setup the game
+		// Start Button starts game
+		// Screen Displays 
+				//time remaining for question
+				//multiple choice answers
+				//hover effects and click over answers
+
+		//user clicks answer
+			//display for right answer
+			//display for wrong answer
+		//RESET
+			// to new question after few secs
+			//seconds reset
+			//and display new question
+		//at end of game, displays:
+			// timer stops
+			// Correct Answers
+			//incorrect answers
+			//unanswered
+			//START OVER BUTTON - that does not reload page
+
+
+
+
+	//i++;
+
+/*	if (questionsArray[i].allAnswers[1] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[2] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[3] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[4] == questionsArray[i].correctAnswer)
+	{
+		correctAnswers++;
+		console.log(correctAnswers);
+	} else if {
+		incorrectAnswers++;
+		console.log(incorrectAnswers);
+	}
+*/
+/*
+	if (i == questionsArray.length){
+		stop();
+	}
+}*/
+
 
 
 // Create html skeleton
