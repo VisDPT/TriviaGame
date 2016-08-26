@@ -22,6 +22,8 @@ var questionsArray = [
 		correctAnswer: "Belize City",
 }];
 
+var answersCorrect=0;
+var answersIncorrect=0;
 //=================== Interval Function ======================
 
 var number = 10;// Seconds
@@ -46,6 +48,9 @@ function decrement(){
     								+ '</p>');
     	answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
+
+		number=10;
+		runQuestions();
     }
 }
 
@@ -81,6 +86,10 @@ function runQuestions(){
 		answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
 		setTimeout(clearMainBox, 3000);		
+
+		number=10;
+		run();
+
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -91,6 +100,9 @@ function runQuestions(){
 		answersCorrect = answersCorrect+1; //adds 1 to answers correct
 		console.log('answers correct:' + answersCorrect);
 		setTimeout(clearMainBox, 3000);
+
+		number=10;
+		run();
 
 	})
 }
