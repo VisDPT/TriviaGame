@@ -22,6 +22,11 @@ var questionsArray = [
 		correctAnswer: "Belize City",
 }];
 
+var answersCorrect = 0;
+var answersIncorrect =0;
+
+var i=0;
+
 //=================== Interval Function ======================
 
 var number = 10;// Seconds
@@ -40,10 +45,12 @@ function decrement(){
     	$('#mainQuestion').empty();
 		$('#allTheAnswers').empty();
 		$('#timeLeft').empty();
-    	console.log('Time Up!');// test/debug
+		answersIncorrect = answersIncorrect+1; //adds 1 to answers correct
+		console.log('answers incorrect:' + answersIncorrect);
     	$('#mainQuestion').append('<p> Times Up! The correct answer was:' 
-    								+ questionsArray[0].correctAnswer 
+    								+ questionsArray[i].correctAnswer 
     								+ '</p>');
+    	//i=+1;
     }
 }
 
@@ -60,11 +67,11 @@ function clearMainBox(){
 
 function runQuestions(){
 	run();
-	$('#mainQuestion').append('<h3>' + questionsArray[0].question + '</h3>');
-	$('#allTheAnswers').append('<p class= "button">' + questionsArray[0].allAnswers[0] + '</p>'+
-							   '<p class= "button">' + questionsArray[0].allAnswers[1] + '</p>'+
-						   	   '<p id= "buttonCorrect">' + questionsArray[0].correctAnswer + '</p>'+
-							   '<p class= "button">' + questionsArray[0].allAnswers[3] + '</p>');
+	$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
+	$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
+							   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
+						   	   '<p id= "buttonCorrect">' + questionsArray[i].allAnswers[2] + '</p>'+
+							   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
 //}
 
 //function checkAnswer(){
@@ -74,9 +81,14 @@ function runQuestions(){
 		$('#allTheAnswers').empty();//clears the answers
 		$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'
 									+ ' ' 
-									+ questionsArray[0].correctAnswer 
+									+ questionsArray[i].correctAnswer 
 									+ '</p>')
-		setTimeout(clearMainBox, 3000);		
+		answersCorrect=answersCorrect+1; //adds 1 to answers correct
+		console.log('answers correct: ' + answersCorrect);
+
+		setTimeout(clearMainBox, 3000);
+		//i+=1;
+
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -84,7 +96,11 @@ function runQuestions(){
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
+		answersIncorrect = answersIncorrect+1; //adds 1 to answers correct
+		console.log('answers incorrect:' + answersIncorrect);
+
 		setTimeout(clearMainBox, 3000);
+		//i+=1;
 	})
 }
 
@@ -102,85 +118,13 @@ function startButton () {
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions(); ///calls the runQuestions
-		//checkAnswer();
+		
+		
 	})
 }
 //============================ PROCESS ==========================
-startButton();	
+startButton();
+
+
+
 });
-
-
-// Create html skeleton
-		// Instruct the user how to play
-
-	// Setup the game
-		// Start Button starts game
-		// Screen Displays 
-				//time remaining for question
-				//multiple choice answers
-				//hover effects and click over answers
-
-		//user clicks answer
-			//display for right answer
-			//display for wrong answer
-		//RESET
-			// to new question after few secs
-			//seconds reset
-			//and display new question
-		//at end of game, displays:
-			// timer stops
-			// Correct Answers
-			//incorrect answers
-			//unanswered
-			//START OVER BUTTON - that does not reload page
-
-
-
-
-	//i++;
-
-/*	if (questionsArray[i].allAnswers[1] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[2] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[3] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[4] == questionsArray[i].correctAnswer)
-	{
-		correctAnswers++;
-		console.log(correctAnswers);
-	} else if {
-		incorrectAnswers++;
-		console.log(incorrectAnswers);
-	}
-*/
-/*
-	if (i == questionsArray.length){
-		stop();
-	}
-}*/
-
-
-
-// Create html skeleton
-		// Instruct the user how to play
-
-	// Setup the game
-		// Start Button starts game
-		// Screen Displays 
-				//time remaining for question
-				//multiple choice answers
-				//hover effects and click over answers
-
-		//user clicks answer
-			//display for right answer
-			//display for wrong answer
-		//RESET
-			// to new question after few secs
-			//seconds reset
-			//and display new question
-		//at end of game, displays:
-			// timer stops
-			// Correct Answers
-			//incorrect answers
-			//unanswered
-			//START OVER BUTTON - that does not reload page
-
-
