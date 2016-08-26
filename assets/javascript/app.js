@@ -50,7 +50,9 @@ function decrement(){
     	$('#mainQuestion').append('<p> Times Up! The correct answer was:' 
     								+ questionsArray[i].correctAnswer 
     								+ '</p>');
-    	//i=+1;
+    	number=10;
+    	i=+1;
+    	runQuestions();
     }
 }
 
@@ -87,7 +89,11 @@ function runQuestions(){
 		console.log('answers correct: ' + answersCorrect);
 
 		setTimeout(clearMainBox, 3000);
-		//i+=1;
+		number = 10;
+		run();
+
+
+		i+=1;
 
 	})
 
@@ -101,6 +107,10 @@ function runQuestions(){
 
 		setTimeout(clearMainBox, 3000);
 		//i+=1;
+		number = 10;
+		run();
+
+		i+=1;
 	})
 }
 
@@ -116,7 +126,8 @@ function startButton () {
 	$('#startButtons').on("click", function(){
 		$('#startButtons').empty();
 		$('#timeLeft').html('<h4> Time Remaining: '); 
-		console.log("Ready, set, go");		
+		console.log("Ready, set, go");
+
 		runQuestions(); ///calls the runQuestions
 		
 		
