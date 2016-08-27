@@ -84,7 +84,7 @@ function checkAnswer(){
 		answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
 		//setTimeout(clearMainBox, 4000);		
-
+		number=10;
 		i++;
 		runQuestions();
 		checkAnswer();
@@ -99,7 +99,7 @@ function checkAnswer(){
 		console.log('answers correct:' + answersCorrect);
 		//setTimeout(clearMainBox, 4000);
 
-		//number=10;
+		number=10;
 		//run();
 		i++;
 		runQuestions();
