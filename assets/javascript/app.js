@@ -7,13 +7,9 @@ var questionsArray = [
 		correctAnswer: "Dubai",
 },
 
-{		question:"Which city has the Taj Mahal?",  
-		allAnswers:["Mumbai", "Agra", "Dubai", "Muscat"],
-		correctAnswer: "Agra",
-},
 
 {		question:"Which city is known for its gondolas?",  
-		allAnswers:["Venice", "Paris", "Madrid", "Athens"],
+		allAnswers:["Paris", "Madrid", "Venice",  "Athens"],
 		correctAnswer: "Venice",
 },
 
@@ -24,6 +20,7 @@ var questionsArray = [
 
 var answersCorrect=0;
 var answersIncorrect=0;
+var i=0;
 //=================== Interval Function ======================
 
 var number = 10;// Seconds
@@ -39,18 +36,17 @@ function decrement(){
     					+ ' seconds <h4>');// Show the number            
     if (number === 0){
     	stop();
-    	$('#mainQuestion').empty();
-		$('#allTheAnswers').empty();
-		$('#timeLeft').empty();
+    	clearMainBox();
     	console.log('Time Up!');// test/debug
     	$('#mainQuestion').append('<p> Times Up! The correct answer was:' 
-    								+ questionsArray[0].correctAnswer 
+    								+ questionsArray[i].correctAnswer 
     								+ '</p>');
     	answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
 
 		number=10;
 		runQuestions();
+		checkAnswer();
     }
 }
 
@@ -67,29 +63,29 @@ function clearMainBox(){
 
 function runQuestions(){
 	run();
-	$('#mainQuestion').append('<h3>' + questionsArray[0].question + '</h3>');
-	$('#allTheAnswers').append('<p class= "button">' + questionsArray[0].allAnswers[0] + '</p>'+
-							   '<p class= "button">' + questionsArray[0].allAnswers[1] + '</p>'+
-						   	   '<p id= "buttonCorrect">' + questionsArray[0].correctAnswer + '</p>'+
-							   '<p class= "button">' + questionsArray[0].allAnswers[3] + '</p>');
-//}
+	$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
+	$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
+							   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
+						   	   '<p id= "buttonCorrect">' + questionsArray[i].correctAnswer + '</p>'+
+							   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
+}
 
-//function checkAnswer(){
+function checkAnswer(){
 	$('.button').on("click", function(){
 		stop();  //stops timer
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
 		$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'
 									+ ' ' 
-									+ questionsArray[0].correctAnswer 
+									+ questionsArray[i].correctAnswer 
 									+ '</p>')
 		answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
-		setTimeout(clearMainBox, 3000);		
+		setTimeout(clearMainBox, 4000);		
 
-		number=10;
-		run();
-
+		i++;
+		runQuestions();
+		checkAnswer();
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -99,10 +95,13 @@ function runQuestions(){
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
 		answersCorrect = answersCorrect+1; //adds 1 to answers correct
 		console.log('answers correct:' + answersCorrect);
-		setTimeout(clearMainBox, 3000);
+		setTimeout(clearMainBox, 4000);
 
-		number=10;
-		run();
+		//number=10;
+		//run();
+		i++;
+		runQuestions();
+		checkAnswer();
 
 	})
 }
@@ -117,10 +116,11 @@ function startButton () {
 	
 	//function for on click to empty and run questions
 	$('#startButtons').on("click", function(){
-		$('#startButtons').empty();
+		$('#startButtons').remove();
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions(); ///calls the runQuestions
+		checkAnswer();
 		//checkAnswer();
 	})
 }
