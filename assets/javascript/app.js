@@ -14,7 +14,7 @@ var questionsArray = [
 },
 
 {		question:"The Great Blue Hole is off the coast of which city?",  
-		allAnswers:["Mexico City", "Bridgetown", "Belize City", "Muscat"],
+		allAnswers:["Mexico City",  "Bridgetown", "Belize City", "Kingston"],
 		correctAnswer: "Belize City",
 }];
 
@@ -45,10 +45,8 @@ function decrement(){
 		console.log('answers incorrect: ' + answersIncorrect);
 
 		number=10;
-		i++;
 		runQuestions();
 		checkAnswer();
-		
     }
 }
 
@@ -106,7 +104,6 @@ function checkAnswer(){
 		checkAnswer();
 
 	})
-
 }
 
 
