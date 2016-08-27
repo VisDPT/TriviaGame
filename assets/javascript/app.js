@@ -14,7 +14,7 @@ var questionsArray = [
 },
 
 {		question:"The Great Blue Hole is off the coast of which city?",  
-		allAnswers:["Mexico City", "Belize City", "Bridgetown", "Kingston", "Muscat"],
+		allAnswers:["Mexico City", "Bridgetown", "Belize City", "Muscat"],
 		correctAnswer: "Belize City",
 }];
 
@@ -45,8 +45,10 @@ function decrement(){
 		console.log('answers incorrect: ' + answersIncorrect);
 
 		number=10;
+		i++;
 		runQuestions();
 		checkAnswer();
+		
     }
 }
 
@@ -81,7 +83,7 @@ function checkAnswer(){
 									+ '</p>')
 		answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
-		setTimeout(clearMainBox, 4000);		
+		//setTimeout(clearMainBox, 4000);		
 
 		i++;
 		runQuestions();
@@ -95,7 +97,7 @@ function checkAnswer(){
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
 		answersCorrect = answersCorrect+1; //adds 1 to answers correct
 		console.log('answers correct:' + answersCorrect);
-		setTimeout(clearMainBox, 4000);
+		//setTimeout(clearMainBox, 4000);
 
 		//number=10;
 		//run();
@@ -104,6 +106,7 @@ function checkAnswer(){
 		checkAnswer();
 
 	})
+
 }
 
 
@@ -153,25 +156,3 @@ startButton();
 			//unanswered
 			//START OVER BUTTON - that does not reload page
 
-
-
-
-	//i++;
-
-/*	if (questionsArray[i].allAnswers[1] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[2] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[3] == questionsArray[i].correctAnswer ||
-		questionsArray[i].allAnswers[4] == questionsArray[i].correctAnswer)
-	{
-		correctAnswers++;
-		console.log(correctAnswers);
-	} else if {
-		incorrectAnswers++;
-		console.log(incorrectAnswers);
-	}
-*/
-/*
-	if (i == questionsArray.length){
-		stop();
-	}
-}*/
