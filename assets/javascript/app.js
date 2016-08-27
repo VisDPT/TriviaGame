@@ -13,6 +13,11 @@ var questionsArray = [
 		correctAnswer: "Venice",
 },
 
+{		question:"Which city is known for its Eiffel Tower?",  
+		allAnswers:[ "Madrid", "Venice", "Paris", "Athens"],
+		correctAnswer: "Paris",
+},
+
 {		question:"The Great Blue Hole is off the coast of which city?",  
 		allAnswers:["Mexico City",  "Bridgetown", "Belize City", "Kingston"],
 		correctAnswer: "Belize City",
@@ -152,4 +157,3 @@ startButton();
 			//incorrect answers
 			//unanswered
 			//START OVER BUTTON - that does not reload page
-

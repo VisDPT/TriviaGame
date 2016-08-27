@@ -145,9 +145,6 @@ p{
 #correctAnswer{
 	border-style: groove;
 	border-width: 10px;
-	border-top-color: yellow;
-	border-left-color: #7cfc00;
-	border-right-color: #00ffff;
-	border-bottom-color:pink;
+	border: #7cfc00;
 	color: #40e0d0;
 }
