@@ -21,7 +21,7 @@ var questionsArray = [
 },
 {		question:"Which city has parts of the Great Wall of China?",  
 		allAnswers:[ "Honk Kong", "Seoul", "Beijing", "Manila"],
-		correctAnswer: "Paris",
+		correctAnswer: "Beijing",
 		image: '<img src="assets/images/greatwall.jpg"/; height= 250px; width =300px;>',		
 },
 
@@ -61,11 +61,6 @@ function decrement(){
     								+ '</p>');
     	unanswered++;
 		console.log('unanswered: ' + unanswered);
-
-		//number=10;
-		//runQuestions();
-		//run();
-		//checkAnswer();
 		setTimeout (clearMainBox, 3000);
 		setTimeout(gameReset, 3000);
 		
@@ -109,36 +104,28 @@ function checkAnswer(){
 									+'<p>'
     								+questionsArray[i].image 
     								+ '</p>')
-		if (i<=3) {
-			answersIncorrect++; //adds 1 to answers incorrect
+		
+			answersIncorrect++;  
 			console.log('answers incorrect: ' + answersIncorrect);
 			setTimeout (clearMainBox, 3000);
 			setTimeout(gameReset, 3000);
-		}
-		else if (i=4) {
-			stop();
-		    setTimeout(displayEndResult, 3000);
-		}
+		
 	})
 
 	$('#buttonCorrect').on("click", function(){
 		stop();  //stops timer
-    	$('#mainQuestion').empty(); //clears the question
-		$('#allTheAnswers').empty();//clears the answers
+    	$('#mainQuestion').empty();  
+		$('#allTheAnswers').empty(); 
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>'
 									+'<p>'
     								+questionsArray[i].image 
     								+ '</p>');
-		if (i<=3) {
-			answersCorrect++; //adds 1 to answers correct
+		
+			answersCorrect++;  
 			console.log('answers correct:' + answersCorrect);
 			setTimeout (clearMainBox, 3000);
 			setTimeout(gameReset, 3000);
-		}
-		else if (i=4) {
-			stop();
-		    setTimeout(displayEndResult, 3000);
-		}		
+				
 	})
 }
 
@@ -153,6 +140,9 @@ function gameReset(){
 
 
 function displayEndResult(){
+	if (i>4)
+	stop();
+	setTimeout (clearMainBox, 3000);
 	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
 								+'<p> Correct Answers: ' + correctAnswer + '</p>'
 								+'<p> Incorrect Answers: ' + incorrectAnswer + '</p>')
