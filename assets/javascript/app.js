@@ -20,7 +20,7 @@ var questionsArray = [
 		image: '<img src="assets/images/Eiffel_tower.jpg"/; height= 250px; width =300px;>',		
 },
 {		question:"Which city has parts of the Great Wall of China?",  
-		allAnswers:[ "Honk Kong", "Seoul", "Beijing", "Manila"],
+		allAnswers:[ "Hong Kong", "Seoul", "Beijing", "Manila"],
 		correctAnswer: "Beijing",
 		image: '<img src="assets/images/greatwall.jpg"/; height= 250px; width =300px;>',		
 },
