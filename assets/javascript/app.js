@@ -25,7 +25,9 @@ var questionsArray = [
 
 var answersCorrect=0;
 var answersIncorrect=0;
+var unanswered =0;
 var i=0;
+
 //=================== Interval Function ======================
 
 var number = 10;// Seconds
@@ -46,11 +48,12 @@ function decrement(){
     	$('#mainQuestion').append('<p> Times Up! The correct answer was:' 
     								+ questionsArray[i].correctAnswer 
     								+ '</p>');
-    	answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
-		console.log('answers incorrect: ' + answersIncorrect);
+    	unanswered++;
+		console.log('unanswered: ' + unanswered);
 
 		number=10;
 		runQuestions();
+		run();
 		checkAnswer();
     }
 }
@@ -63,17 +66,22 @@ function stop(){
 function clearMainBox(){
     	$('#mainQuestion').empty();
 		$('#allTheAnswers').empty();
-		$('#timeLeft').empty();
+		//$('#timeLeft').empty();
 }
 
 function runQuestions(){
-	run();
+	//run();
 	$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
 	$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
 							   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
 						   	   '<p id= "buttonCorrect">' + questionsArray[i].correctAnswer + '</p>'+
 							   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
 }
+
+
+
+
+
 
 function checkAnswer(){
 	$('.button').on("click", function(){
@@ -84,13 +92,14 @@ function checkAnswer(){
 									+ ' ' 
 									+ questionsArray[i].correctAnswer 
 									+ '</p>')
-		answersIncorrect=answersIncorrect+1; //adds 1 to answers incorrect
+		answersIncorrect++; //adds 1 to answers incorrect
 		console.log('answers incorrect: ' + answersIncorrect);
-		//setTimeout(clearMainBox, 4000);		
-		number=10;
-		i++;
-		runQuestions();
-		checkAnswer();
+		setTimeout (clearMainBox, 4000);
+		setTimeout(gameReset, 4000);
+				
+	
+		
+
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -98,21 +107,35 @@ function checkAnswer(){
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
 		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
-		answersCorrect = answersCorrect+1; //adds 1 to answers correct
+		answersCorrect++; //adds 1 to answers correct
 		console.log('answers correct:' + answersCorrect);
-		//setTimeout(clearMainBox, 4000);
-
-		number=10;
-		//run();
-		i++;
-		runQuestions();
-		checkAnswer();
-
+		setTimeout (clearMainBox, 4000);
+		setTimeout(gameReset, 4000);
+		
+		
+		
 	})
 }
 
+function gameReset(){
+	number=10;
+	i++;
+	runQuestions();
+	run();
+	checkAnswer();
+}
 
+function displayEndResult(){
+// if (i>3){
+// 			//clearMainBox();
+// 	stop();
+// 			$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
+// 									+ '<p> Correct Answers: ' + correctAnswer + '</p>'
+// 									+ '<p> Incorrect Answers: ' + incorrectAnswer + '</p>')
+// 		}
+// 		}
 
+}
 
 //=====================START BUTTON FUNCTIONS ===================
 function startButton () {
@@ -125,13 +148,21 @@ function startButton () {
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions(); ///calls the runQuestions
+		run();
 		checkAnswer();
+		
+		
 		//checkAnswer();
 	})
 }
 //============================ PROCESS ==========================
 startButton();	
+//displayEndResult();
+
+
 });
+
+
 
 
 // Create html skeleton
