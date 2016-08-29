@@ -5,35 +5,23 @@ var questionsArray = [
 {		question:"Which city has the Burj Khalifa?",  
 		allAnswers:["Paris", "NYC", "Dubai", "Muscat"],
 		correctAnswer: "Dubai",
-		image: '<img src="assets/images/Burj_Khalifa.jpg"/; height= 250px; width =250px;>',
+		image: "assets/images/Burj_Khalifa.jpg"
 },
 
 
 {		question:"Which city is known for its gondolas?",  
 		allAnswers:["Paris", "Madrid", "Venice",  "Athens"],
 		correctAnswer: "Venice",
-		image: '<img src="assets/images/gondola.jpg"/; height= 200px; width =300px;>',
-},
-
-{		question:"Which city is known for its Eiffel Tower?",  
-		allAnswers:[ "Madrid", "Venice", "Paris", "Athens"],
-		correctAnswer: "Paris",
-		image: '<img src="assets/images/Eiffel_tower.jpg"/; height= 250px; width =300px;>',
-
-		
 },
 
 {		question:"The Great Blue Hole is off the coast of which city?",  
-		allAnswers:["Mexico City",  "Bridgetown", "Belize City", "Kingston"],
+		allAnswers:["Mexico City", "Belize City", "Bridgetown", "Kingston", "Muscat"],
 		correctAnswer: "Belize City",
-		image: '<img src="assets/images/belize.jpg"/; height= 250px; width =300px;>',
 }];
 
 var answersCorrect=0;
 var answersIncorrect=0;
-var unanswered =0;
 var i=0;
-
 //=================== Interval Function ======================
 
 var number = 10;// Seconds
@@ -53,20 +41,14 @@ function decrement(){
     	console.log('Time Up!');// test/debug
     	$('#mainQuestion').append('<p> Times Up! The correct answer was:' 
     								+ questionsArray[i].correctAnswer 
-    								+ '</p>'
-    								+'<p>'
-    								+questionsArray[i].image 
     								+ '</p>');
-    	unanswered++;
-		console.log('unanswered: ' + unanswered);
+    	answersIncorrect++; //adds 1 to answers incorrect
+		console.log('answers incorrect: ' + answersIncorrect);
 
-		//number=10;
-		//runQuestions();
-		//run();
-		//checkAnswer();
-		setTimeout (clearMainBox, 3000);
-		setTimeout(gameReset, 3000);
-		
+		number=10;
+		i++;
+		runQuestions();
+		checkAnswer();
     }
 }
 
@@ -78,83 +60,73 @@ function stop(){
 function clearMainBox(){
     	$('#mainQuestion').empty();
 		$('#allTheAnswers').empty();
-		//$('#timeLeft').empty();
+		$('#timeLeft').empty();
 }
 
 function runQuestions(){
-	//run();
+	run();
 	$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
 	$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
 							   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
-						   	   '<p id= "buttonCorrect">' + questionsArray[i].correctAnswer + '</p>'+
+						   	   '<p class= "button">' + questionsArray[i].allAnswers[2] + '</p>'+
 							   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
 }
-
-
-
-
-
 
 function checkAnswer(){
 	$('.button').on("click", function(){
 		stop();  //stops timer
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
-		$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'
+		
+			if (questionsArray[i].correctAnswer == questionsArray[i].allAnswers[i]){
+				$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>');
+				answersCorrect = answersCorrect+1; //adds 1 to answers correct
+				console.log('answers correct:' + answersCorrect);
+				//setTimeout(clearMainBox, 4000);
+
+			} else {
+				$('#mainQuestion').append('<p id=correctAnswer> SORRY, WRONG ANSWER. The correct answer was:'
 									+ ' ' 
 									+ questionsArray[i].correctAnswer 
-									+ '</p>'
-									+'<p>'
-    								+questionsArray[i].image 
-    								+ '</p>')
-		if (i<=3) {
-			answersIncorrect++; //adds 1 to answers incorrect
-			console.log('answers incorrect: ' + answersIncorrect);
-			setTimeout (clearMainBox, 3000);
-			setTimeout(gameReset, 3000);
-		}
-		else if (i=4) {
-			stop();
-		    setTimeout(displayEndResult, 3000);
-		}
-	})
+									+ '</p>')
+				answersIncorrect++;
+				console.log('answers incorrect: ' + answersIncorrect);
+				//setTimeout(clearMainBox, 4000);	
 
+				
+
+			}
+
+			i++;
+			runQuestions();
+			checkAnswer();
+	})
+}
+
+				
+
+		
+
+		//i++;
+		//runQuestions();
+		//checkAnswer();
+	//}
+/*
 	$('#buttonCorrect').on("click", function(){
 		stop();  //stops timer
     	$('#mainQuestion').empty(); //clears the question
 		$('#allTheAnswers').empty();//clears the answers
-		$('#mainQuestion').append('<p>YOU GUESSED RIGHT!!! YOU ARE A GLOBE TROTTER!</p>'
-									+'<p>'
-    								+questionsArray[i].image 
-    								+ '</p>');
-		if (i<=3) {
-			answersCorrect++; //adds 1 to answers correct
-			console.log('answers correct:' + answersCorrect);
-			setTimeout (clearMainBox, 3000);
-			setTimeout(gameReset, 3000);
-		}
-		else if (i=4) {
-			stop();
-		    setTimeout(displayEndResult, 3000);
-		}		
+		
+
+		//number=10;
+		//run();
+		i++;
+		runQuestions();
+		checkAnswer();
+
 	})
-}
+} */
 
-function gameReset(){
-	number=10;
-	i++;
-	runQuestions();
-	run();
-	checkAnswer();
-}
-
-
-
-function displayEndResult(){
-	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
-								+'<p> Correct Answers: ' + correctAnswer + '</p>'
-								+'<p> Incorrect Answers: ' + incorrectAnswer + '</p>')
-}
 
 
 
@@ -169,18 +141,13 @@ function startButton () {
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions(); ///calls the runQuestions
-		run();
 		checkAnswer();
-	})
+		//checkAnswer();
+	});
 }
 //============================ PROCESS ==========================
 startButton();	
-//displayEndResult();
-
-
 });
-
-
 
 
 // Create html skeleton
@@ -206,3 +173,26 @@ startButton();
 			//incorrect answers
 			//unanswered
 			//START OVER BUTTON - that does not reload page
+
+
+
+
+	//i++;
+
+/*	if (questionsArray[i].allAnswers[1] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[2] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[3] == questionsArray[i].correctAnswer ||
+		questionsArray[i].allAnswers[4] == questionsArray[i].correctAnswer)
+	{
+		correctAnswers++;
+		console.log(correctAnswers);
+	} else if {
+		incorrectAnswers++;
+		console.log(incorrectAnswers);
+	}
+*/
+/*
+	if (i == questionsArray.length){
+		stop();
+	}
+}*/
