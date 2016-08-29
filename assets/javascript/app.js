@@ -8,7 +8,6 @@ var questionsArray = [
 		image: '<img src="assets/images/Burj_Khalifa.jpg"/; height= 250px; width =250px;>',
 },
 
-
 {		question:"Which city is known for its gondolas?",  
 		allAnswers:["Paris", "Madrid", "Venice",  "Athens"],
 		correctAnswer: "Venice",
@@ -18,9 +17,12 @@ var questionsArray = [
 {		question:"Which city is known for its Eiffel Tower?",  
 		allAnswers:[ "Madrid", "Venice", "Paris", "Athens"],
 		correctAnswer: "Paris",
-		image: '<img src="assets/images/Eiffel_tower.jpg"/; height= 250px; width =300px;>',
-
-		
+		image: '<img src="assets/images/Eiffel_tower.jpg"/; height= 250px; width =300px;>',		
+},
+{		question:"Which city has parts of the Great Wall of China?",  
+		allAnswers:[ "Honk Kong", "Seoul", "Beijing", "Manila"],
+		correctAnswer: "Paris",
+		image: '<img src="assets/images/greatwall.jpg"/; height= 250px; width =300px;>',		
 },
 
 {		question:"The Great Blue Hole is off the coast of which city?",  
@@ -36,7 +38,7 @@ var i=0;
 
 //=================== Interval Function ======================
 
-var number = 10;// Seconds
+var number = 15;// Seconds
 
 function run(){
     counter = setInterval(decrement, 1000)    
@@ -141,7 +143,7 @@ function checkAnswer(){
 }
 
 function gameReset(){
-	number=10;
+	number=15;
 	i++;
 	runQuestions();
 	run();
