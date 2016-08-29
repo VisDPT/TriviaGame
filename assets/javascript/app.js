@@ -26,7 +26,7 @@ var questionsArray = [
 {		question:"The Great Blue Hole is off the coast of which city?",  
 		allAnswers:["Mexico City",  "Bridgetown", "Belize City", "Kingston"],
 		correctAnswer: "Belize City",
-		image: '<img src="assets/images/belize.jpg"/; height= 250px; width =300px;>',
+		image: '<img src="assets/images/Belize.jpg"/; height= 250px; width =300px;>',
 }];
 
 var answersCorrect=0;
