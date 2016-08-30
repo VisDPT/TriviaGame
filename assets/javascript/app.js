@@ -88,8 +88,9 @@ function runQuestions(){
 								   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
 	}
 	else{
-		startButton();
+		
 		displayEndResult();
+		startButton();
 		
 		$('#timeLeft').remove();
 		stop();	
@@ -140,32 +141,30 @@ function gameReset(){
 	checkAnswer();
 	}
 }
-// //else {
-// 	stop();
-// 	setTimeout (clearMainBox, 3000);
-// 	$('#timeLeft').empty();
-
-// 	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
-// 								+'<p> Correct Answers: ' + answersCorrect + '</p>'
-// 								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
-// 	setTimeout (startButton, 3000);
-
-	
-
-// } 
-
-
-
-
 
 function displayEndResult(){
 	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
 								+'<p> Correct Answers: ' + answersCorrect + '</p>'
 								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
-	startButton();
+	//restartButton();
 }
 
-
+/*
+function restartButton () {
+	var restartButton = $('<button> PLAY AGAIN!! </button>');
+	$('#restartButtons').append(restartButton);
+	
+	//function for on click to empty and run questions
+	$('#restartButtons').on("click", function(){
+		$('#restartButtons').empty();
+		clearMainBox();
+		$('#timeLeft').html('<h4> Time Remaining: '); 
+		console.log("Ready, set, go");		
+		runQuestions(); ///calls the runQuestions
+		run();
+		checkAnswer();
+	})
+}*/
 
 //=====================START BUTTON FUNCTIONS ===================
 function startButton () {
@@ -174,7 +173,7 @@ function startButton () {
 	
 	//function for on click to empty and run questions
 	$('#startButtons').on("click", function(){
-		$('#startButtons').remove();
+		$('#startButtons').empty();
 		$('#timeLeft').html('<h4> Time Remaining: '); 
 		console.log("Ready, set, go");		
 		runQuestions(); ///calls the runQuestions
