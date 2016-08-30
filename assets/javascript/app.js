@@ -73,34 +73,28 @@ function stop(){
 
 //=====================FUNCTIONS ===================
 function clearMainBox(){
-    	$('#mainQuestion').empty();
-		$('#allTheAnswers').empty();
-		//$('#timeLeft').empty();
+    $('#mainQuestion').empty();
+	$('#allTheAnswers').empty();
+	//$('#timeLeft').empty();
 }
 
 function runQuestions(){
 	//run();
 	if (i<questionsArray.length){
-	$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
-	$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
-							   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
-						   	   '<p id= "buttonCorrect">' + questionsArray[i].correctAnswer + '</p>'+
-							   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
-}
+		$('#mainQuestion').append('<h3>' + questionsArray[i].question + '</h3>');
+		$('#allTheAnswers').append('<p class= "button">' + questionsArray[i].allAnswers[0] + '</p>'+
+								   '<p class= "button">' + questionsArray[i].allAnswers[1] + '</p>'+
+							   	   '<p id= "buttonCorrect">' + questionsArray[i].correctAnswer + '</p>'+
+								   '<p class= "button">' + questionsArray[i].allAnswers[3] + '</p>');
+	}
 	else{
-	stop();
-	setTimeout (clearMainBox, 3000);
-	$('#timeLeft').empty();
-	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
-								+'<p> Correct Answers: ' + answersCorrect + '</p>'
-								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
-	setTimeout (startButton, 3000);
+		startButton();
+		displayEndResult();
+		
+		$('#timeLeft').remove();
+		stop();	
 	}
 }
-
-
-
-
 
 
 function checkAnswer(){
@@ -114,12 +108,11 @@ function checkAnswer(){
 									+ '</p>'
 									+'<p>'
     								+questionsArray[i].image 
-    								+ '</p>')
-		
-			answersIncorrect++;  
-			console.log('answers incorrect: ' + answersIncorrect);
-			setTimeout (clearMainBox, 3000);
-			setTimeout(gameReset, 3000);	
+    								+ '</p>')	
+		answersIncorrect++;  
+		console.log('answers incorrect: ' + answersIncorrect);
+		setTimeout (clearMainBox, 3000);
+		setTimeout(gameReset, 3000);	
 	})
 
 	$('#buttonCorrect').on("click", function(){
@@ -130,11 +123,10 @@ function checkAnswer(){
 									+'<p>'
     								+questionsArray[i].image 
     								+ '</p>');
-		
-			answersCorrect++;  
-			console.log('answers correct:' + answersCorrect);
-			setTimeout (clearMainBox, 3000);
-			setTimeout(gameReset, 3000);
+		answersCorrect++;  
+		console.log('answers correct:' + answersCorrect);
+		setTimeout (clearMainBox, 3000);
+		setTimeout(gameReset, 3000);
 				
 	})
 }
@@ -146,31 +138,31 @@ function gameReset(){
 	runQuestions();
 	run();
 	checkAnswer();
-} else {
-	stop();
-	setTimeout (clearMainBox, 3000);
-	$('#timeLeft').empty();
+	}
+}
+// //else {
+// 	stop();
+// 	setTimeout (clearMainBox, 3000);
+// 	$('#timeLeft').empty();
 
-	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
-								+'<p> Correct Answers: ' + answersCorrect + '</p>'
-								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
-	setTimeout (startButton, 3000);
+// 	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
+// 								+'<p> Correct Answers: ' + answersCorrect + '</p>'
+// 								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
+// 	setTimeout (startButton, 3000);
 
 	
 
-}
+// } 
 
-}
+
 
 
 
 function displayEndResult(){
-	if (i>4)
-	stop();
-	setTimeout (clearMainBox, 3000);
 	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
-								+'<p> Correct Answers: ' + correctAnswer + '</p>'
-								+'<p> Incorrect Answers: ' + incorrectAnswer + '</p>')
+								+'<p> Correct Answers: ' + answersCorrect + '</p>'
+								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
+	startButton();
 }
 
 
@@ -192,9 +184,6 @@ function startButton () {
 }
 //============================ PROCESS ==========================
 startButton();	
-//displayEndResult();
-
-
 });
 
 
