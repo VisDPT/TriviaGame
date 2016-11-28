@@ -90,7 +90,7 @@ function runQuestions(){
 	else{
 		
 		displayEndResult();
-		startButton();
+		//startButton();
 		
 		$('#timeLeft').remove();
 		stop();	
@@ -143,7 +143,7 @@ function gameReset(){
 }
 
 function displayEndResult(){
-	$('#mainQuestion').append('<p> Unanswered: ' + unanswered + '</p>'
+	$('#mainQuestion').append('<p> Refresh Page to Restart</p>'+ '<p> Unanswered: ' + unanswered + '</p>'
 								+'<p> Correct Answers: ' + answersCorrect + '</p>'
 								+'<p> Incorrect Answers: ' + answersIncorrect + '</p>');
 	//restartButton();
